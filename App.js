@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {StyleSheet, Switch, Text, View} from 'react-native';
+import {Switch, Text, View} from 'react-native';
+import styles from './src/assets/styles';
 
 export default function App() {
   const [habilitado, setHabilitado] = useState(false);
 
-  function valor() {
+  function valorDoSwitch() {
     setHabilitado(estadoAnterior => !estadoAnterior);
     console.warn(habilitado);
   }
@@ -12,26 +13,12 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.texto}>Aula de Switch</Text>
-      <Switch 
-      trackColor={{false: '#767577', true:'#81b0ff'}}
-      thumbColor={habilitado ? '#f5dd4b' : '#f4f3f4'}
-      onValueChange={valor}
-      value={habilitado}
+      <Switch
+        trackColor={{false: '#767577', true: '#f4f3f4'}}
+        thumbColor={habilitado ? 'blue' : '#f4f3f4'}
+        onValueChange={valorDoSwitch}
+        value={habilitado}
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#804000',
-    // color: 
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  texto: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-});
